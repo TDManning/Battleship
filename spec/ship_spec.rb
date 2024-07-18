@@ -20,4 +20,12 @@ RSpec.describe Ship do
         end
     end
 
+    describe '#sunk?' do
+        it 'gives false if the ship has not been sunk' do
+            expect(@cruiser.sunk?).to eq(false)
+        end
+        it 'gives true if the ship has been sunk' do
+            expect(@cruiser.sunk?).to eq(true)
+        end
+    end
 end
