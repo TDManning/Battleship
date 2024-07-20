@@ -31,4 +31,8 @@ class Board
         end
     end
 
+    def valid_placement?(ship_name, desired_coordinates)
+       desired_coordinates.length == ship_name.length
+    end
+
 end
