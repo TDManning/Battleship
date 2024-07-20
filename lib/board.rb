@@ -33,8 +33,8 @@ class Board
 
     def valid_placement?(ship_name, desired_coordinates)
        desired_coordinates.length == ship_name.length
-        range = "A1".."A4", "B1".."B4", "C1".."C4", "D1".."D4"
-        require 'pry'; binding.pry
+        # range = "A1".."A4", "B1".."B4", "C1".."C4", "D1".."D4"
+        # require 'pry'; binding.pry
     end
 
 end
