@@ -31,27 +31,73 @@ class Board
         end
     end
 
-    # def valid_placement?(ship_name, desired_coordinates)
-    #    desired_coordinates.length == ship_name.length
-    #     # if desired_coordinates does not include the same letter or the same number
-    #     # AND if the desired_coordinates are not horizontal or vertical
-    #     # return false
-    #     possible_placement = nil
-    #     desired_coordinates.each_cons(desired_coordinates.length) do |coordinates|
-    #         require 'pry'; binding.pry
-    #     end
-    # end
 
     def valid_placement?(ship_name, desired_coordinates)
-        desired_coordinates.length == ship_name.length
         cell_keys = @cells.keys
         result = false
-        cell_keys.each_cons(desired_coordinates.length) do |key|
-            if desired_coordinates == key
-                result = true
+        
+        if desired_coordinates.length == ship_name.length
+            result = true
+        end
+
+       
+
+
+       
+        horizontal = letter_check?(desired_coordinates)
+        vertical = number_check?(desired_coordinates)
+        # require 'pry'; binding.pry
+
+        if  horizontal && vertical
+            result = true
+        else
+            result = false
+        end
+       
+        
+
+
+    
+
+        return result
+    end
+
+    def letter_check?(desired_coordinates)
+        verify = false
+        char_to_check = desired_coordinates[0][0]
+
+        desired_coordinates.each do |coord|
+            # require 'pry'; binding.pry
+            if coord[0] == char_to_check
+                verify = true
+            else
+                verify = false
                 break
             end
         end
-        return result
+        # require 'pry'; binding.pry
+
+       return verify
+    end
+
+    
+    def number_check?(desired_coordinates)
+        verify = false
+        num_to_check = desired_coordinates[0][1].to_i
+        desired_coordinates.shift
+
+        desired_coordinates.each do |coord|
+            x = coord[1].to_i == (num_to_check + 1)
+            # require 'pry'; binding.pry
+            if x
+                verify = true
+                num_to_check = coord[1].to_i
+            else
+                verify = false
+                break
+            end
+        end
+        # require 'pry'; binding.pry
+        return verify
     end
 end
