@@ -31,37 +31,30 @@ class Board
         end
     end
 
-
+    # In valid placement we need to show that the cruiser must equal 2 spaces or else false 
+    # AND that the submarine must equal 3 spaces or else false. 
     def valid_placement?(ship_name, desired_coordinates)
         cell_keys = @cells.keys
         result = false
         
         if desired_coordinates.length == ship_name.length
             result = true
+
+        else return false
         end
 
-       
-
-
-       
         horizontal = letter_check?(desired_coordinates)
         vertical = number_check?(desired_coordinates)
-        # require 'pry'; binding.pry
 
         if  horizontal && vertical
             result = true
         else
             result = false
         end
-       
-        
 
-
-    
-
-        return result
+        return result    
     end
-
+  
     def letter_check?(desired_coordinates)
         verify = false
         char_to_check = desired_coordinates[0][0]
